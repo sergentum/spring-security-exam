@@ -15,8 +15,7 @@ public class Initializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(WebAppConfig.class);
-        ctx.register(SecurityConfig.class);
+        ctx.scan("com.devcolibri.secure.config");
         servletContext.addListener(new ContextLoaderListener(ctx));
 
         ctx.setServletContext(servletContext);
